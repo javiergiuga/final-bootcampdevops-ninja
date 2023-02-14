@@ -1,0 +1,17 @@
+{
+    "environments":{
+        "master":{
+            "EC2INSTANCE":"ec2-user@54.162.236.53",
+            "Author":"javiergiuga"
+        },
+        "testing":{
+            "EC2INSTANCE":"ec2-user@174.129.175.199",
+            "Author":"javiergiuga"
+        },
+        "develop":{
+            "EC2INSTANCE":"ec2-user@50.16.154.114",
+            "Author":"javiergiuga"
+        }
+
+    }
+}

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  front:
+    container_name: front
+    image: REGISTRY/REPOSITORY:VERSION
+    ports:
+      - "3000:3000"
+    environment:
+      - PRODUCTS_SERVICE=host.docker.internal
+      - SHOPPING_CART_SERVICE=host.docker.internal
+      
+  products:
+    container_name: products
+    image: REGISTRY/REPOSITORY:VERSION
+    ports:
+      - "3001:3001"
+
+  shopping-cart:
+    container_name: shopping
+    image: REGISTRY/REPOSITORY:VERSION
+    ports:
+      - "3002:3002"
