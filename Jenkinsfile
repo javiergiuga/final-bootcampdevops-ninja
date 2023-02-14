@@ -20,14 +20,6 @@ pipeline {
                 echo "Init"
                 sh 'npm install'
             }
-        }
-        stage('Unit Test') {
-            agent{
-                docker {
-                    image 'node:erbium-alpine'
-                    args '-u root:root'
-                }
-            }
         } 
         stage('Docker Build') {
             steps {
