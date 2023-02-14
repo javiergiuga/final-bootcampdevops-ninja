@@ -29,6 +29,9 @@ pipeline {
                 }
             }
             steps {
+                cd frontend
+            }
+            steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sh 'npm run test'
                 }
