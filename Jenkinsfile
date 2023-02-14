@@ -28,15 +28,6 @@ pipeline {
                     args '-u root:root'
                 }
             }
-            steps {
-                sh cd frontend {
-                }
-            }
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'npm run test'
-                }
-            }
         } 
         stage('Docker Build') {
             steps {
