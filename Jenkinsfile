@@ -29,7 +29,8 @@ pipeline {
                 }
             }
             steps {
-                cd frontend
+                sh cd frontend {
+                }
             }
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
