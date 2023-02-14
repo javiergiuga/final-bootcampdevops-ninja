@@ -53,6 +53,7 @@ pipeline {
         }
         stage('Notify Telegram') {
             steps {
+                sh 'chmod +x automation/telegram.sh'
             }
         }
 
