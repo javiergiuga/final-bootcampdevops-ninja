@@ -1,8 +1,8 @@
 version: '3'
 services:
   front:
-    container_name: front
-    image: REGISTRY/REPOSITORY:VERSION
+    container_name: NAME
+    image: REGISTRY/NAME:VERSION
     ports:
       - "3000:3000"
     environment:
