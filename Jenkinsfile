@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Automation') {
             steps {
-               sh 'git clone -b ninja https://github.com/javiergiuga/automation.git'
+               sh 'git clone -b master https://github.com/javiergiuga/scrip-ninja-automation.git'
             }
         }
         stage('install dependencies') {
