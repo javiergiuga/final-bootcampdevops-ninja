@@ -51,10 +51,10 @@ pipeline {
                 sh './scrip-ninja-automation/frontend/docker_push.sh'
             }
         }
-        stage('Deploy to EC2 frontend') {
+        stage('Deploy to EC2') {
             steps {
                 sshagent(['ssh-ec2']){
-                    sh './scrip-ninja-automation/frontend/deploy_to_ec2_compose.sh'
+                    sh './scrip-ninja-automation/deploy_to_ec2_compose.sh'
                 }
             }
         }
