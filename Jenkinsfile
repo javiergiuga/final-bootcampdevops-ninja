@@ -21,34 +21,22 @@ pipeline {
                 sh 'npm install'
             }
         } 
-        stage('Docker Build shopping') {
+        stage('Docker Build & Push Shopping-Cart') {
             steps {
                sh './scrip-ninja-automation/shopping-cart/docker_build.sh'
+               sh './scrip-ninja-automation/shopping-cart/docker_push.sh'
             }
         }
-        stage('Docker Push shopping to Docker-hub') {
-            steps {
-                sh './scrip-ninja-automation/shopping-cart/docker_push.sh'
-            }
-        }
-        stage('Docker Build products') {
+        stage('Docker Build & Push Products') {
             steps {
                sh './scrip-ninja-automation/products/docker_build.sh'
+               sh './scrip-ninja-automation/products/docker_push.sh'
             }
         }
-        stage('Docker Push products to Docker-hub') {
-            steps {
-                sh './scrip-ninja-automation/products/docker_push.sh'
-            }
-        }
-        stage('Docker Build frontend') {
+        stage('Docker Build & Push Frontend') {
             steps {
                sh './scrip-ninja-automation/frontend/docker_build.sh'
-            }
-        }
-        stage('Docker Push frontend to Docker-hub') {
-            steps {
-                sh './scrip-ninja-automation/frontend/docker_push.sh'
+               sh './scrip-ninja-automation/frontend/docker_push.sh'
             }
         }
         stage('Deploy to EC2') {
