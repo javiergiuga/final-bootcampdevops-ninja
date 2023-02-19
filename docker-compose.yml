@@ -8,6 +8,9 @@ services:
     environment:
       - PRODUCTS_SERVICE=host.docker.internal
       - SHOPPING_CART_SERVICE=host.docker.internal
+    depends_on:
+      - products
+      - shopping-cart
       
   products:
     container_name: NAMEP
