@@ -20,6 +20,19 @@ pipeline {
                 echo "Init"
                 sh 'npm install'
             }
+        }
+        stage('Unit Test') {
+            agent{
+                docker {
+                    image 'node:erbium-alpine'
+                    args '-u root:root'
+                }
+            }
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                sh ' cd frontend && npm run test'
+                }
+            }
         } 
         stage('Docker Build & Push Shopping-Cart') {
             steps {
