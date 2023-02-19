@@ -1,8 +1,8 @@
 version: '3'
 services:
   front:
-    container_name: NAME
-    image: REGISTRY/NAME:VERSION
+    container_name: NAMEF
+    image: REGISTRY/NAMEF:VERSION
     ports:
       - "3000:3000"
     environment:
@@ -10,13 +10,13 @@ services:
       - SHOPPING_CART_SERVICE=host.docker.internal
       
   products:
-    container_name: NAME
-    image: REGISTRY/NAME:VERSION
+    container_name: NAMEP
+    image: REGISTRY/NAMEP:VERSION
     ports:
       - "3001:3001"
 
   shopping-cart:
-    container_name: NAME
-    image: REGISTRY/NAME:VERSION
+    container_name: NAMES
+    image: REGISTRY/NAMES:VERSION
     ports:
       - "3002:3002"
