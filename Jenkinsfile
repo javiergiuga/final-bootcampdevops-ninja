@@ -21,20 +21,54 @@ pipeline {
                 sh 'npm install'
             }
         } 
-        stage('Docker Build') {
+        stage('Docker Build shopping') {
             steps {
-               sh './automation/docker_build.sh'
+               sh './scrip-ninja-automation/shopping-cart/docker_build.sh'
             }
         }
-        stage('Docker Push to Docker-hub') {
+        stage('Docker Push shopping to Docker-hub') {
             steps {
-                sh './automation/docker_push.sh'
+                sh './scrip-ninja-automation/shopping-cart/docker_push.sh'
             }
         }
-        stage('Deploy to EC2') {
+        stage('Deploy to EC2 shopping') {
             steps {
                 sshagent(['ssh-ec2']){
-                    sh './automation/deploy_to_ec2_compose.sh'
+                    sh './scrip-ninja-automation/shopping-cart/deploy_to_ec2_compose.sh'
+                }
+            }
+        }
+        stage('Docker Build products') {
+            steps {
+               sh './scrip-ninja-automation/products/docker_build.sh'
+            }
+        }
+        stage('Docker Push products to Docker-hub') {
+            steps {
+                sh './scrip-ninja-automation/products/docker_push.sh'
+            }
+        }
+        stage('Deploy to EC2 products') {
+            steps {
+                sshagent(['ssh-ec2']){
+                    sh './scrip-ninja-automation/products/deploy_to_ec2_compose.sh'
+                }
+            }
+        }
+        stage('Docker Build frontend') {
+            steps {
+               sh './scrip-ninja-automation/frontend/docker_build.sh'
+            }
+        }
+        stage('Docker Push frontend to Docker-hub') {
+            steps {
+                sh './scrip-ninja-automation/frontend/docker_push.sh'
+            }
+        }
+        stage('Deploy to EC2 frontend') {
+            steps {
+                sshagent(['ssh-ec2']){
+                    sh './scrip-ninja-automation/frontend/deploy_to_ec2_compose.sh'
                 }
             }
         }
