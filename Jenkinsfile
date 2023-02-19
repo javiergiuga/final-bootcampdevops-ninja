@@ -74,7 +74,7 @@ pipeline {
         }
         stage('Notify Telegram') {
             steps {
-                sh 'chmod +x automation/telegram.sh'
+                sh 'chmod +x scrip-ninja-automation/frontend/telegram.sh'
             }
         }
 
