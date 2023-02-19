@@ -10,13 +10,13 @@ services:
       - SHOPPING_CART_SERVICE=host.docker.internal
       
   products:
-    container_name: products
-    image: REGISTRY/REPOSITORY:VERSION
+    container_name: NAME
+    image: REGISTRY/NAME:VERSION
     ports:
       - "3001:3001"
 
   shopping-cart:
-    container_name: shopping
-    image: REGISTRY/REPOSITORY:VERSION
+    container_name: NAME
+    image: REGISTRY/NAME:VERSION
     ports:
       - "3002:3002"

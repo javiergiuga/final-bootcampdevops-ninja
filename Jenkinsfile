@@ -31,13 +31,6 @@ pipeline {
                 sh './scrip-ninja-automation/shopping-cart/docker_push.sh'
             }
         }
-        stage('Deploy to EC2 shopping') {
-            steps {
-                sshagent(['ssh-ec2']){
-                    sh './scrip-ninja-automation/shopping-cart/deploy_to_ec2_compose.sh'
-                }
-            }
-        }
         stage('Docker Build products') {
             steps {
                sh './scrip-ninja-automation/products/docker_build.sh'
@@ -46,13 +39,6 @@ pipeline {
         stage('Docker Push products to Docker-hub') {
             steps {
                 sh './scrip-ninja-automation/products/docker_push.sh'
-            }
-        }
-        stage('Deploy to EC2 products') {
-            steps {
-                sshagent(['ssh-ec2']){
-                    sh './scrip-ninja-automation/products/deploy_to_ec2_compose.sh'
-                }
             }
         }
         stage('Docker Build frontend') {
