@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Automation') {
             steps {
-               sh 'git clone -b ninja https://github.com/javiergiuga/automation.git'
+               sh 'git clone -b master https://github.com/javiergiuga/scrip-ninja-automation.git'
             }
         }
         stage('install dependencies') {
@@ -20,27 +20,48 @@ pipeline {
                 echo "Init"
                 sh 'npm install'
             }
-        } 
-        stage('Docker Build') {
+        }
+        stage('Unit Test') {
+            agent{
+                docker {
+                    image 'node:erbium-alpine'
+                    args '-u root:root'
+                }
+            }
             steps {
-               sh './automation/docker_build.sh'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                sh 'cd frontend && npm run test'
+                }
+            }
+        } 
+        stage('Docker Build & Push Shopping-Cart') {
+            steps {
+               sh './scrip-ninja-automation/shopping-cart/docker_build.sh'
+               sh './scrip-ninja-automation/shopping-cart/docker_push.sh'
             }
         }
-        stage('Docker Push to Docker-hub') {
+        stage('Docker Build & Push Products') {
             steps {
-                sh './automation/docker_push.sh'
+               sh './scrip-ninja-automation/products/docker_build.sh'
+               sh './scrip-ninja-automation/products/docker_push.sh'
+            }
+        }
+        stage('Docker Build & Push Frontend') {
+            steps {
+               sh './scrip-ninja-automation/frontend/docker_build.sh'
+               sh './scrip-ninja-automation/frontend/docker_push.sh'
             }
         }
         stage('Deploy to EC2') {
             steps {
                 sshagent(['ssh-ec2']){
-                    sh './automation/deploy_to_ec2_compose.sh'
+                    sh './scrip-ninja-automation/deploy_to_ec2_compose.sh'
                 }
             }
         }
         stage('Notify Telegram') {
             steps {
-                sh 'chmod +x automation/telegram.sh'
+                sh 'chmod +x scrip-ninja-automation/frontend/telegram.sh'
             }
         }
 
