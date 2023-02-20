@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh ' cd frontend && npm run test'
+                sh 'cd frontend && npm run test'
                 }
             }
         } 
