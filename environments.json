@@ -1,6 +1,6 @@
 {
     "environments":{
-        "production":{
+        "producction":{
             "EC2INSTANCE":"ec2-user@44.211.120.230",
             "Author":"javiergiuga"
         },
