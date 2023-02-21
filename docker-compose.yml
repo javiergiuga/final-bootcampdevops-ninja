@@ -6,8 +6,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - PRODUCTS_SERVICE=host.docker.internal
-      - SHOPPING_CART_SERVICE=host.docker.internal
+      - PRODUCTS_SERVICE=NAMEP
+      - SHOPPING_CART_SERVICE=NAMES
     depends_on:
       - products
       - shopping-cart
