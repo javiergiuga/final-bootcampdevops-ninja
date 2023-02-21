@@ -1,15 +1,15 @@
 {
     "environments":{
         "producction":{
-            "EC2INSTANCE":"ec2-user@44.211.120.230",
+            "EC2INSTANCE":"ec2-user@52.90.15.154",
             "Author":"javiergiuga"
         },
         "testing":{
-            "EC2INSTANCE":"ec2-user@44.204.212.179",
+            "EC2INSTANCE":"ec2-user@54.89.111.89",
             "Author":"javiergiuga"
         },
         "develop":{
-            "EC2INSTANCE":"ec2-user@44.213.128.207",
+            "EC2INSTANCE":"ec2-user@35.173.201.177",
             "Author":"javiergiuga"
         }
 
