@@ -11,15 +11,18 @@ services:
     depends_on:
       - products
       - shopping-cart
+    restart: always
       
   products:
     container_name: NAMEP
     image: REGISTRY/NAMEP:VERSION
     ports:
       - "3001:3001"
+    restart: always
 
   shopping-cart:
     container_name: NAMES
     image: REGISTRY/NAMES:VERSION
     ports:
       - "3002:3002"
+    restart: always
